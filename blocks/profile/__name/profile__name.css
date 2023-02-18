@@ -1,0 +1,19 @@
+.profile__name {
+  min-width: 294px;
+  color: #ffffff;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  grid-area: name;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@media (max-width: 770px) {
+  .profile__name {
+    min-width: 189px;
+    font-size: 27px;
+    line-height: 33px;
+  }
+}
