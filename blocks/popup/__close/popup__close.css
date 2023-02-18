@@ -1,4 +1,4 @@
-.popup__close-button {
+.popup__close {
   all: unset;
   position: absolute;
   left: 419px;
@@ -11,16 +11,16 @@
   background-position: center;
 }
 @media (max-width: 500px) {
-  .popup__close-button {
+  .popup__close {
     left: 283px;
   }
 }
 @media (max-width: 390px) {
-  .popup__close-button {
+  .popup__close {
     left: 250px;
   }
 }
-.popup__close-button:hover {
+.popup__close:hover {
   transition: 1s linear;
   opacity: 0.6;
 }

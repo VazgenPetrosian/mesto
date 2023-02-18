@@ -6,19 +6,19 @@ editProfileButton.addEventListener("click", function () {
 function closePopup() {
   editPopup.classList.remove("popup_opened");
 }
-let saveButton = document.querySelector(".input__save-button");
-let editPopupCloseButton = document.querySelector(".popup__close-button");
+let saveButton = document.querySelector(".popup__save-button");
+let editPopupCloseButton = document.querySelector(".popup__close");
 editPopupCloseButton.addEventListener("click", closePopup);
 
 let userName = "Жак-Ив Кусто";
 let userOccupation = "Исследователь океана";
 let profileName = document.querySelector(".profile__name");
 let profileInfo = document.querySelector(".profile__desc-profile");
-let userNameInput = document.querySelector(".input__name");
-let userOccupationInput = document.querySelector(".input__description");
-let formElement = document.querySelector(".input__container");
-let nameInput = document.querySelector(".input__name");
-let occupationInput = document.querySelector(".input__description");
+let userNameInput = document.querySelector(".popup__name");
+let userOccupationInput = document.querySelector(".popup__description");
+let formElement = document.querySelector(".popup__form");
+let nameInput = document.querySelector(".popup__name");
+let occupationInput = document.querySelector(".popup__description");
 
 function handleFormSubmit(evt) {
   evt.preventDefault();

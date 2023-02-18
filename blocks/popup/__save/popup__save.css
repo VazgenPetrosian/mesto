@@ -1,4 +1,4 @@
-.input__save-button {
+.popup__save {
   padding: 0;
   background: #000000;
   border-radius: 2px;
@@ -14,14 +14,14 @@
   line-height: 22px;
 }
 @media (max-width: 500px) {
-  .input__save-button {
+  .popup__save {
     width: 238px;
     height: 46px;
     font-size: 14px;
     line-height: 17px;
   }
 }
-.input__save-button:hover {
+.popup__save:hover {
   transition: 1s linear;
   opacity: 0.8;
 }
