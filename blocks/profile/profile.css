@@ -5,7 +5,12 @@
   flex-direction: row;
   align-items: center;
 }
-@media (max-width: 770px) {
+@media (max-width: 910px) {
+  .profile {
+    margin: 0 15px;
+  }
+}
+@media (max-width: 780px) {
   .profile {
     flex-direction: column;
     flex-wrap: wrap;

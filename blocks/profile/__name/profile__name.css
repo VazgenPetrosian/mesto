@@ -9,8 +9,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin: 0;
 }
-@media (max-width: 770px) {
+@media (max-width: 780px) {
   .profile__name {
     min-width: 189px;
     font-size: 27px;
