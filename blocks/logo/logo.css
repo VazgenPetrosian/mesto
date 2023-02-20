@@ -3,6 +3,11 @@
   height: 33px;
   margin-top: 41px;
 }
+@media (max-width: 920px) {
+  .logo {
+    margin-left: 20px;
+  }
+}
 @media (max-width: 400px) {
   .logo {
     width: 103.74px;

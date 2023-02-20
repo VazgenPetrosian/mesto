@@ -14,11 +14,11 @@ let editPopupCloseButton = document.querySelector(".popup__close");
 
 function closePopup() {
   editPopup.classList.remove("popup_opened");
-  nameInput.value = profileName.textContent;
-  occupationInput.value = profileInfo.textContent;
 }
 function openPopup() {
   editPopup.classList.add("popup_opened");
+  nameInput.value = profileName.textContent;
+  occupationInput.value = profileInfo.textContent;
 }
 function handleFormSubmit(evt) {
   evt.preventDefault();

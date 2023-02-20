@@ -1,5 +1,5 @@
 .profile__name {
-  min-width: 294px;
+  max-width: 294px;
   color: #ffffff;
   font-family: "Inter", "Arial", sans-serif;
   font-weight: 500;
@@ -13,7 +13,7 @@
 }
 @media (max-width: 780px) {
   .profile__name {
-    min-width: 189px;
+    max-width: 282px;
     font-size: 27px;
     line-height: 33px;
   }
