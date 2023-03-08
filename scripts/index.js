@@ -37,7 +37,7 @@ const formSubmitCard = document.querySelector(".popup__form_type_add-card");
 const popupImage = document.querySelector(".popup__zoom-image");
 const popupCaption = document.querySelector(".popup__zoom-caption");
 const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
-const editPopup = document.querySelector(".popup__edit-profile");
+const editPopup = document.querySelector(".popup_type_edit-profile");
 const saveButton = document.querySelector(".popup__button_type_add-card");
 const profileName = document.querySelector(".profile__name");
 const profileInfo = document.querySelector(".profile__desc-profile");
@@ -55,7 +55,7 @@ const createButton = document.querySelector(".profile__add-button");
 const createPopupCloseButton = document.querySelector(
   ".popup__close_type_add-card"
 );
-const createPopup = document.querySelector(".popup__add-card");
+const createPopup = document.querySelector(".popup_type_add-card");
 const popupBigImageCloseButton = document.querySelector(
   ".popup__close_type_zoom"
 );
