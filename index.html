@@ -10,7 +10,6 @@
   <body class="pages">
     <header class="header">
       <img class="logo" src="./images/logo.svg" alt="Лого" />
-      <!-- <div class="line"></div> -->
     </header>
     <main class="main-page">
       <section class="profile">
@@ -22,113 +21,79 @@
         </div>
         <button type="button" class="profile__add-button"></button>
       </section>
-      <section class="cards">
-        <!-- <article class="card"> -->
-        <!-- <button class="card__trashcan" type="button"></button>
-          <img class="card__image" src="./images/dombai.jpg" alt="Домбай" />
-          <div class="card__block">
-            <h2 class="card__heading">Домбай</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <button class="card__trashcan" type="button"></button>
-          <img class="card__image" src="./images/elbrus.png" alt="Эльбрус" />
-          <div class="card__block">
-            <h2 class="card__heading">Эльбрус</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <button class="card__trashcan" type="button"></button>
-          <img
-            class="card__image"
-            src="./images/karachaevsk.png"
-            alt="Карачаевск"
-          />
-          <div class="card__block">
-            <h2 class="card__heading">Карачаевск</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <button class="card__trashcan" type="button"></button>
-          <img class="card__image" src="./images/dombai.jpg" alt="Домбай" />
-          <div class="card__block">
-            <h2 class="card__heading">Домбай</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <button class="card__trashcan" type="button"></button>
-          <img class="card__image" src="./images/dombai.jpg" alt="Домбай" />
-          <div class="card__block">
-            <h2 class="card__heading">Домбай</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <button class="card__trashcan" type="button"></button>
-          <img class="card__image" src="./images/dombai.jpg" alt="Домбай" />
-          <div class="card__block">
-            <h2 class="card__heading">Домбай</h2>
-            <button class="card__like" type="button"></button>
-          </div>
-        </article> -->
-      </section>
+      <section class="cards"></section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&#169;2023 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup__edit-profile">
       <div class="popup__container">
-        <button type="button" class="popup__close"></button>
-        <h2 class="popup__edit-heading">Редактировать профиль</h2>
-        <form class="popup__form" name="form">
+        <button
+          type="button"
+          class="popup__close popup__close_type_edit-profile"
+        ></button>
+        <h2 class="popup__heading">Редактировать профиль</h2>
+        <form class="popup__form popup__form_type_edit-profile" name="form">
           <input
             type="text"
             value="Жак-Ив Кусто"
             class="popup__input popup__input_select_name"
             name="name"
+            placeholder="Название"
           />
           <input
             type="text"
             value="Исследователь океана"
             class="popup__input popup__input_select_description"
             name="description"
+            placeholder="Ссылка на картинку"
           />
-          <button type="submit" class="popup__save">Сохранить</button>
+          <button
+            type="submit"
+            class="popup__button popup__button_type_edit-profile"
+          >
+            Сохранить
+          </button>
         </form>
       </div>
     </div>
-    <div class="popup-add">
-      <div class="popup-add__container">
-        <button type="button" class="popup-add__close"></button>
-        <h2 class="popup-add__heading">Новое место</h2>
-        <form class="popup-add__form" name="form">
+    <div class="popup popup__add-card">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="popup__close popup__close_type_add-card"
+        ></button>
+        <h2 class="popup__heading">Новое место</h2>
+        <form class="popup__form popup__form_type_add-card" name="form">
           <input
             type="text"
             value="Название"
-            class="popup-add__input popup-add__input_select_name"
+            class="popup__input popup__input_select_place"
             name="name"
           />
           <input
             type="text"
             value="Ссылка на картинку"
-            class="popup-add__input popup-add__input_select_link"
+            class="popup__input popup__input_select_link"
             name="link"
           />
-          <button type="submit" class="popup-add__create-button">
+          <button
+            type="submit"
+            class="popup__button popup__button_type_add-card"
+          >
             Создать
           </button>
         </form>
       </div>
     </div>
-    <div class="popup-zoom">
-      <div class="popup-zoom__container">
-        <button type="button" class="popup-zoom__close"></button>
-        <img class="popup-zoom__image" />
-        <p class="popup-zoom__caption"></p>
+    <div class="popup popup_type_zoom">
+      <div class="popup__zoom-container">
+        <button
+          type="button"
+          class="popup__close popup__close_type_zoom"
+        ></button>
+        <img class="popup__zoom-image" />
+        <p class="popup__zoom-caption"></p>
       </div>
     </div>
     <template class="template">
