@@ -10,3 +10,8 @@
   padding: 0;
   padding-bottom: 13px;
 }
+.popup__input:last-of-type {
+}
+/* .popup__input:invalid {
+  border-bottom: 1px solid red;
+} */

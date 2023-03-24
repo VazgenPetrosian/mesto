@@ -26,6 +26,7 @@
     <footer class="footer">
       <p class="footer__copyright">&#169;2023 Mesto Russia</p>
     </footer>
+    <!-- //попап редактирования -->
     <div class="popup popup_type_edit-profile">
       <div class="popup__container">
         <button
@@ -35,19 +36,29 @@
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form class="popup__form popup__form_type_edit-profile" name="form">
           <input
+            minlength="2"
+            maxlength="40"
+            required
             type="text"
             value="Жак-Ив Кусто"
             class="popup__input popup__input_select_name"
             name="name"
+            id="name-value"
             placeholder="Название"
           />
+          <span class="popup__input-error name-value-input-error"></span>
           <input
+            minlength="2"
+            maxlength="200"
+            required
             type="text"
             value="Исследователь океана"
             class="popup__input popup__input_select_description"
             name="description"
-            placeholder="Ссылка на картинку"
+            id="description-value"
+            placeholder="О себе"
           />
+          <span class="popup__input-error description-value-input-error"></span>
           <button
             type="submit"
             class="popup__button popup__button_type_edit-profile"
@@ -57,6 +68,7 @@
         </form>
       </div>
     </div>
+    <!-- попап добавления карточки -->
     <div class="popup popup_type_add-card">
       <div class="popup__container">
         <button
@@ -66,20 +78,29 @@
         <h2 class="popup__heading">Новое место</h2>
         <form class="popup__form popup__form_type_add-card" name="form">
           <input
+            minlength="2"
+            maxlength="30"
+            required
             type="text"
             class="popup__input popup__input_select_place"
             name="name"
+            id="name-add-value"
             placeholder="Название"
           />
+          <span class="popup__input-error name-add-value-input-error"></span>
           <input
+            type="url"
+            required
             type="text"
             placeholder="Ссылка на картинку"
             class="popup__input popup__input_select_link"
             name="link"
+            id="link-value"
           />
+          <span class="popup__input-error link-value-input-error"></span>
           <button
             type="submit"
-            class="popup__button popup__button_type_add-card"
+            class="popup__button popup__button_type_add-card popup__button_disabled"
           >
             Создать
           </button>
@@ -106,6 +127,7 @@
         </div>
       </article>
     </template>
+    <script src="scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

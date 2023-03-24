@@ -30,6 +30,7 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
+const popups = document.querySelectorAll(".popup");
 const name = document.querySelector(".popup__input_select_place");
 const link = document.querySelector(".popup__input_select_link");
 const popupBigImage = document.querySelector(".popup_type_zoom");
@@ -82,10 +83,12 @@ function handleDeleteButtonClick(event) {
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", closeByEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeByEsc);
 }
 
 function handleFormSubmitProfile(evt) {
@@ -123,7 +126,20 @@ function createCard(card) {
   });
   return element;
 }
+function closeByEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+}
 
+popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup_opened")) {
+      closePopup(popup);
+    }
+  });
+});
 initialCards.forEach((card) => cardsContainer.append(createCard(card)));
 
 formElement.addEventListener("submit", handleFormSubmitProfile);
