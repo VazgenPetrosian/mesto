@@ -1,5 +1,4 @@
-//Функция показа текста ошибок
-
+// текст ошибки
 const showInputError = (
   formElement,
   inputElement,
@@ -10,13 +9,13 @@ const showInputError = (
   const errorElement = formElement.querySelector(
     `.${inputElement.id}-input-error`
   );
-  console.log(errorElement);
+  // console.log(errorElement);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(errorClass);
   inputElement.classList.add(inputErrorClass);
 };
 
-//Функция скрытия текста ошибок
+//скрытие ошибок
 const hideInputError = (
   formElement,
   inputElement,
@@ -26,7 +25,7 @@ const hideInputError = (
   const errorElement = formElement.querySelector(
     `.${inputElement.id}-input-error`
   );
-  console.log(errorElement);
+  // console.log(errorElement);
   errorElement.classList.remove(errorClass);
   inputElement.classList.remove(inputErrorClass);
   errorElement.textContent = "";
@@ -54,7 +53,7 @@ const setEventListeners = (formElement, settings) => {
   });
 };
 
-//Функция проверки валидности инпутов
+//валид не валид
 
 const checkInputValidity = (formElement, inputElement, settings) => {
   if (!inputElement.validity.valid) {
@@ -65,7 +64,6 @@ const checkInputValidity = (formElement, inputElement, settings) => {
       settings.errorClass,
       settings.inputErrorClass
     );
-    console.log("инпут валиден");
   } else {
     hideInputError(
       formElement,
@@ -73,17 +71,16 @@ const checkInputValidity = (formElement, inputElement, settings) => {
       settings.errorClass,
       settings.inputErrorClass
     );
-    console.log("инпут не валиден");
   }
 };
 
-//Функция деактивации кнопки формы
+//неактивная
 const disabledSubmitButton = (buttonElement, settings) => {
   buttonElement.classList.add(settings.inactiveButtonClass);
   buttonElement.setAttribute("disabled", true);
 };
 
-//Функция активации кнопки формы
+//активная
 const enabledSubmitButton = (buttonElement, settings) => {
   buttonElement.classList.remove(settings.inactiveButtonClass);
   buttonElement.removeAttribute("disabled");
@@ -122,12 +119,3 @@ enableValidation({
   submitButtonSelector: ".popup__button",
   inputErrorClass: "popup__input_type_error",
 });
-
-// enableValidation({
-//   formSelector: ".popup__form",
-//   inputSelector: ".popup__input",
-//   submitButtonSelector: ".popup__button",
-//   inactiveButtonClass: "popup__button_disabled",
-//   inputErrorClass: "popup__input_type_error",
-//   errorClass: "popup__error_visible",
-// });
