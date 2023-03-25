@@ -1,35 +1,35 @@
-const initialCards = [
-  {
-    name: "Архыз",
-    alt: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    alt: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    alt: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    alt: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    alt: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    alt: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+// const initialCards = [
+//   {
+//     name: "Архыз",
+//     alt: "Архыз",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+//   },
+//   {
+//     name: "Челябинская область",
+//     alt: "Челябинская область",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+//   },
+//   {
+//     name: "Иваново",
+//     alt: "Иваново",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+//   },
+//   {
+//     name: "Камчатка",
+//     alt: "Камчатка",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+//   },
+//   {
+//     name: "Холмогорский район",
+//     alt: "Холмогорский район",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+//   },
+//   {
+//     name: "Байкал",
+//     alt: "Байкал",
+//     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+//   },
+// ];
 const popups = document.querySelectorAll(".popup");
 const name = document.querySelector(".popup__input_select_place");
 const link = document.querySelector(".popup__input_select_link");
@@ -38,13 +38,15 @@ const formSubmitCard = document.querySelector(".popup__form_type_add-card");
 const popupImage = document.querySelector(".popup__zoom-image");
 const popupCaption = document.querySelector(".popup__zoom-caption");
 const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
-const editPopup = document.querySelector(".popup_type_edit-profile");
+const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const saveButton = document.querySelector(".popup__button_type_add-card");
 const profileName = document.querySelector(".profile__name");
 const profileInfo = document.querySelector(".profile__desc-profile");
 const userNameInput = document.querySelector(".popup__name");
 const userOccupationInput = document.querySelector(".popup__description");
-const formElement = document.querySelector(".popup__form_type_edit-profile");
+const formEditProfile = document.querySelector(
+  ".popup__form_type_edit-profile"
+);
 const nameInput = document.querySelector(".popup__input_select_name");
 const occupationInput = document.querySelector(
   ".popup__input_select_description"
@@ -52,11 +54,11 @@ const occupationInput = document.querySelector(
 const buttonCloseEditProfilePopup = document.querySelector(
   ".popup__close_type_edit-profile"
 );
-const createButton = document.querySelector(".profile__add-button");
+const buttonOpenPopupAddCard = document.querySelector(".profile__add-button");
 const buttonCloseCreatePopup = document.querySelector(
   ".popup__close_type_add-card"
 );
-const createPopup = document.querySelector(".popup_type_add-card");
+const popupAddCard = document.querySelector(".popup_type_add-card");
 const popupBigImageCloseButton = document.querySelector(
   ".popup__close_type_zoom"
 );
@@ -64,7 +66,6 @@ const cardsContainer = document.querySelector(".cards");
 
 function handleFormSubmitCard(event) {
   event.preventDefault();
-  const formSubmitCard = event.target;
   const card = {
     name: name.value,
     link: link.value,
@@ -72,7 +73,7 @@ function handleFormSubmitCard(event) {
   };
   formSubmitCard.reset(),
     cardsContainer.prepend(createCard(card)),
-    closePopup(createPopup);
+    closePopup(popupAddCard);
 }
 
 function handleDeleteButtonClick(event) {
@@ -95,7 +96,7 @@ function handleFormSubmitProfile(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileInfo.textContent = occupationInput.value;
-  closePopup(editPopup);
+  closePopup(popupEditProfile);
 }
 function closeBigImage() {
   popupBigImage.classList.remove("popup-zoom_opened");
@@ -142,21 +143,21 @@ popups.forEach((popup) => {
 });
 initialCards.forEach((card) => cardsContainer.append(createCard(card)));
 
-formElement.addEventListener("submit", handleFormSubmitProfile);
+formEditProfile.addEventListener("submit", handleFormSubmitProfile);
 buttonOpenPopupProfile.addEventListener("click", function () {
-  openPopup(editPopup);
+  openPopup(popupEditProfile);
   nameInput.value = profileName.textContent;
   occupationInput.value = profileInfo.textContent;
 });
 buttonCloseEditProfilePopup.addEventListener("click", function () {
-  closePopup(editPopup);
+  closePopup(popupEditProfile);
 });
-createButton.addEventListener("click", function () {
-  openPopup(createPopup);
-  // formSubmitCard.reset();
+buttonOpenPopupAddCard.addEventListener("click", function () {
+  openPopup(popupAddCard);
+  formSubmitCard.reset();
 });
 buttonCloseCreatePopup.addEventListener("click", function () {
-  closePopup(createPopup);
+  closePopup(popupAddCard);
 });
 popupBigImageCloseButton.addEventListener("click", function () {
   closePopup(popupBigImage);
