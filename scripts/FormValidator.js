@@ -9,7 +9,6 @@ const settings = {
 
 class FormValidator {
   constructor(settings, formElement) {
-    // this.settings = settings;
     this._formElement = formElement;
     this._inputList = Array.from(
       formElement.querySelectorAll(settings.inputSelector)
@@ -54,15 +53,10 @@ class FormValidator {
   }
 
   enableValidation() {
-    const formList = Array.from(
-      document.querySelectorAll(settings.formSelector)
-    );
-    formList.forEach((formElement) => {
-      formElement.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-      });
-      this._setEventListeners();
+    this._formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
     });
+    this._setEventListeners();
   }
 
   _setEventListeners() {
@@ -92,6 +86,14 @@ class FormValidator {
     } else {
       this._disabledSubmitButton();
     }
+  }
+
+  resetValidation() {
+    this._toggleButtonState();
+
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
   }
 }
 export { FormValidator, settings };
