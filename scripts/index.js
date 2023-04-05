@@ -83,9 +83,9 @@ function closeByEsc(evt) {
 }
 
 function handleCardClick(name, link) {
-  document.querySelector(".popup__zoom-image").src = link;
-  document.querySelector(".popup__zoom-caption").textContent = name;
-  document.querySelector(".popup__zoom-image").alt = name;
+  popupImage.src = link;
+  popupCaption.textContent = name;
+  popupImage.alt = name;
   openPopup(popupBigImage);
 }
 
@@ -106,8 +106,9 @@ buttonOpenPopupProfile.addEventListener("click", function () {
 });
 
 buttonOpenPopupAddCard.addEventListener("click", function () {
-  openPopup(popupAddCard);
+  formSubmitCard.reset();
   formValidators[formSubmitCard.getAttribute("name")].resetValidation();
+  openPopup(popupAddCard);
 });
 
 closeButtons.forEach((button) => {
