@@ -6,8 +6,8 @@ class PopupWithImage extends Popup {
     this._popupCaption = this._popup.querySelector(".popup__zoom-caption");
   }
 
-  openPopup(name, link) {
-    super.openPopup();
+  open(name, link) {
+    super.open();
     this._popupImage.src = link;
     this._popupCaption.textContent = name;
     this._popupImage.alt = name;
