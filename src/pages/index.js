@@ -1,5 +1,5 @@
 import "./index.css";
-import { initialCards } from "../components/constants.js";
+import { initialCards } from "../utils/constants.js";
 import { FormValidator, settings } from "../components/FormValidator.js";
 import { Card } from "../components/Card.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
@@ -24,17 +24,8 @@ const cardsList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const startCard = new Card(
-        {
-          data: item,
-          handleCardClick: (name, link) => {
-            popupCardBigImage.open(name, link);
-          },
-        },
-        "#templateID"
-      );
-      const cardElement = startCard.createCard();
-      cardsList.addItem(cardElement);
+      const startCard = createCard(item);
+      cardsList.addItem(startCard);
     },
   },
   cardsContainer
@@ -51,21 +42,28 @@ const popupWithFormProfile = new PopupWithForm(".popup_type_edit-profile", {
   },
 });
 popupWithFormProfile.setEventListeners();
+//отдельная функция создающая карточку и передается дальше
+function createCard(item) {
+  const card = new Card(
+    {
+      data: item,
+      handleCardClick: (name, link) => {
+        popupCardBigImage.open(name, link);
+      },
+    },
+    "#templateID"
+  );
+  const cardElement = card.createCard();
+  return cardElement;
+}
 
 const popupWithFormCard = new PopupWithForm(".popup_type_add-card", {
   submitForm: (inputValues) => {
-    //передается inputValues из PopupWithForm
-    const newCard = new Card(
-      {
-        data: { name: inputValues.name, link: inputValues.description },
-        handleCardClick: (name, link) => {
-          popupCardBigImage.open(name, link);
-        },
-      },
-      "#templateID"
-    );
-    const cardiB = newCard.createCard();
-    cardsList.addItem(cardiB);
+    const newCard = {
+      name: inputValues.name,
+      link: inputValues.description,
+    };
+    cardsList.addItem(createCard(newCard));
     popupWithFormCard.close();
   },
 });
