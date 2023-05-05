@@ -30,4 +30,11 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-export { initialCards };
+const apiToken = {
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-65",
+  headers: {
+    authorization: "ce55775e-6fe1-4bd4-a65b-e80c24fd297e",
+    "Content-Type": "application/json",
+  },
+};
+export { initialCards, apiToken };

@@ -1,11 +1,12 @@
 import "./index.css";
-import { initialCards } from "../utils/constants.js";
+import { initialCards, apiToken } from "../utils/constants.js";
 import { FormValidator, settings } from "../components/FormValidator.js";
 import { Card } from "../components/Card.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
+import { Api } from "../components/Api.js";
 
 const formSubmitCard = document.forms["card-form"];
 const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
@@ -19,10 +20,12 @@ const occupationInput = document.querySelector(
 const buttonOpenPopupAddCard = document.querySelector(".profile__add-button");
 const cardsContainer = document.querySelector(".cards");
 
+const api = new Api(apiToken);
+
 //класс Section добавляет карточки обрабатывая массив
 const cardsList = new Section(
   {
-    items: initialCards,
+    items: initial,
     renderer: (item) => {
       const startCard = createCard(item);
       cardsList.addItem(startCard);
