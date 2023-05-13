@@ -37,4 +37,26 @@ const apiToken = {
     "Content-Type": "application/json",
   },
 };
-export { initialCards, apiToken };
+
+const formSubmitCard = document.forms["card-form"];
+const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
+const formEditProfile = document.forms["edit-form"];
+const nameInput = document.querySelector(".popup__input_select_name");
+const occupationInput = document.querySelector(
+  ".popup__input_select_description"
+);
+const buttonOpenPopupAddCard = document.querySelector(".profile__add-button");
+const cardsContainer = document.querySelector(".cards");
+const buttonEditAvatarPic = document.querySelector(".profile__avatar-button");
+export {
+  initialCards,
+  apiToken,
+  formSubmitCard,
+  buttonOpenPopupProfile,
+  formEditProfile,
+  nameInput,
+  occupationInput,
+  buttonOpenPopupAddCard,
+  cardsContainer,
+  buttonEditAvatarPic,
+};

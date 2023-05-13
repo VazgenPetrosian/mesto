@@ -1,5 +1,16 @@
 import "./index.css";
-import { initialCards, apiToken } from "../utils/constants.js";
+import {
+  initialCards,
+  apiToken,
+  formSubmitCard,
+  buttonOpenPopupProfile,
+  formEditProfile,
+  nameInput,
+  occupationInput,
+  buttonOpenPopupAddCard,
+  cardsContainer,
+  buttonEditAvatarPic,
+} from "../utils/constants.js";
 import { FormValidator, settings } from "../components/FormValidator.js";
 import { Card } from "../components/Card.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
@@ -9,25 +20,12 @@ import { Section } from "../components/Section.js";
 import { Api } from "../components/Api.js";
 import { PopupWithConform } from "../components/PopupWithConform.js";
 
-const formSubmitCard = document.forms["card-form"];
-const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
-const profileName = document.querySelector(".profile__name");
-const profileInfo = document.querySelector(".profile__desc-profile");
-const formEditProfile = document.forms["edit-form"];
-const nameInput = document.querySelector(".popup__input_select_name");
-const occupationInput = document.querySelector(
-  ".popup__input_select_description"
-);
-const buttonOpenPopupAddCard = document.querySelector(".profile__add-button");
-const cardsContainer = document.querySelector(".cards");
-const buttonEditAvatarPic = document.querySelector(".profile__avatar-button");
-
 //временный попап на аватар
 const popupEditAvatarPic = new PopupWithForm(".popup_type_avatar", {
-  submitForm: (cardId) => {
+  submitForm: (avatarPic) => {
     popupEditAvatarPic.renderLoading(true);
     api
-      .editUserAvatar(cardId)
+      .editUserAvatar(avatarPic)
       .then((res) => {
         userProfileInfo.setUserAvatar(res.avatar);
         popupEditAvatarPic.close();
@@ -57,27 +55,39 @@ const cardList = new Section(
 );
 
 const api = new Api(apiToken);
-api.getAllData().then((card) => {
-  const [cards, userData] = card;
-  userId = userData._id;
-  const profileInfoApi = {
-    userName: userData.name,
-    userInfo: userData.about,
-  };
-  userProfileInfo.setUserInfo(profileInfoApi);
-  userProfileInfo.setUserAvatar(userData.avatar);
-  cardList.renderItems(cards);
-});
+api
+  .getAllData()
+  .then((card) => {
+    const [cards, userData] = card;
+    userId = userData._id;
+    const profileInfoApi = {
+      userName: userData.name,
+      userInfo: userData.about,
+    };
+    userProfileInfo.setUserInfo(profileInfoApi);
+    userProfileInfo.setUserAvatar(userData.avatar);
+    cardList.renderItems(cards);
+  })
+  .catch((error) => {
+    console.error(`Ошибка массива кард: ${error} - ${error.statusText}`);
+  });
 //мой userId;
 let userId;
 //экземпляры попапов с формой
 const popupWithFormProfile = new PopupWithForm(".popup_type_edit-profile", {
   submitForm: (userData) => {
-    api.editProfileInfo(userData).then((res) => {
-      const newUserData = { userName: res.name, userInfo: res.about };
-      userProfileInfo.setUserInfo(newUserData);
-      popupWithFormProfile.close();
-    });
+    api
+      .editProfileInfo(userData)
+      .then((res) => {
+        const newUserData = { userName: res.name, userInfo: res.about };
+        userProfileInfo.setUserInfo(newUserData);
+        popupWithFormProfile.close();
+      })
+      .catch((error) => {
+        console.error(
+          `Ошибка установки информации о юзере: ${error} - ${error.statusText}`
+        );
+      });
   },
 });
 popupWithFormProfile.setEventListeners();
