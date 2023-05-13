@@ -41,3 +41,6 @@
 @import url(../blocks/popup/__input/_type/_error.css);
 @import url(../blocks/popup/__zoom-image/popup__zoom-image.css);
 @import url(../blocks/popup/__zoom-caption/popup__zoom-caption.css);
+@import url(../blocks/card/__trashcan/_type/card__trashcan_type_hidden.css);
+@import url(../blocks/card/__likes-number/card__likes-number.css);
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);

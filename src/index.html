@@ -13,11 +13,9 @@
     </header>
     <main class="main-page">
       <section class="profile">
-        <img
-          class="profile__avatar"
-          src="<%=require('./images/Kusto.jpg')%>"
-          alt="Кусто"
-        />
+        <button class="profile__avatar-button">
+          <img class="profile__avatar" src="#" alt="Кусто" />
+        </button>
         <div class="profile__info">
           <button type="button" class="profile__edit-button"></button>
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -125,7 +123,53 @@
       </div>
     </div>
     <!-- <div></div> ПОПАП подтверждения удаления карточки -->
+    <div class="popup popup_type_deleteCard">
+      <div class="popup__container">
+        <button
+          class="popup__close popup__close_type_deleteCard"
+          type="button"
+        ></button>
+        <form
+          class="popup__form popup__form_type_deleteCard"
+          name="delete-form"
+        >
+          <h2 class="popup__heading">Вы уверены?</h2>
+          <button
+            class="popup__button popup__button_type_deleteCard"
+            type="submit"
+          >
+            Да
+          </button>
+        </form>
+      </div>
+    </div>
     <!-- <div></div> ПОПАП установки аватара -->
+    <div class="popup popup_type_avatar">
+      <div class="popup__container">
+        <button
+          class="popup__close popup__close_type_avatar"
+          type="button"
+        ></button>
+        <form class="popup__form popup__form_type_avatar" name="avatar-form">
+          <h2 class="popup__heading">Обновить аватар</h2>
+          <input
+            name="description"
+            placeholder="Ссылка на аватар"
+            type="url"
+            class="popup__input popup__input_select_url"
+            required
+            id="avatar-value"
+          />
+          <span class="popup__input-error avatar-value-input-error"></span>
+          <button
+            class="popup__button popup__button_type_avatar popup__button_disabled"
+            type="submit"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
     <!-- //попап увеличенной картинки -->
     <!-- ШАБЛОН -->
     <template class="template" id="templateID">
@@ -134,8 +178,9 @@
         <img class="card__image" />
         <div class="card__block">
           <h2 class="card__heading"></h2>
-          <button class="card__like" type="button"></button>
-          <p class="card__likes-numer">0</p>
+          <button class="card__like" type="button">
+            <p class="card__likes-number">0</p>
+          </button>
         </div>
       </article>
     </template>

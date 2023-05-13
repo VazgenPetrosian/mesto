@@ -1,11 +1,22 @@
 class Card {
-  constructor({ data, handleCardClick }, templateSelector) {
+  constructor(
+    { data, handleCardClick },
+    userId,
+    { handleCardLikes },
+    { handleCardDelete },
+    templateSelector
+  ) {
     this._card = data;
     this._name = this._card.name;
     this._link = this._card.link;
     this._alt = this._card.name;
+    this._likes = this._card.likes;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._handleCardLikes = handleCardLikes;
+    this._handleCardDelete = handleCardDelete;
+    this._userId = userId;
+    this._ownerId = this._card.owner._id;
   }
 
   _getTemplate() {
@@ -16,24 +27,47 @@ class Card {
     return element;
   }
 
+  _checkMyCard() {
+    if (this._ownerId !== this._userId) {
+      this._cardTrashcan.classList.add("card__trashcan_type_hidden");
+    }
+  }
+
   createCard() {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector(".card__image");
     this._cardLike = this._element.querySelector(".card__like");
-    // this._cardImage.src = this._link;
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__heading").textContent = this._name;
     this._cardImage.alt = this._alt;
+    this._cardTrashcan = this._element.querySelector(".card__trashcan");
+    this._counterLike = this._element.querySelector(".card__likes-number");
 
     this._setEventListeners();
+    this._checkMyLike();
+    this.showCardLikes(this._likes);
+    this._checkMyCard();
     return this._element;
   }
-
-  _getLike() {
-    this._cardLike.classList.toggle("card__like_active");
+  //раздел лайков
+  hasMyLike() {
+    return this._likes.some((user) => user._id === this._userId);
   }
-
-  _deleteCard() {
+  isLiked() {
+    this._cardLike.classList.add("card__like_active");
+  }
+  isNotLiked() {
+    this._cardLike.classList.remove("card__like_active");
+  }
+  _checkMyLike() {
+    this.hasMyLike() ? this.isLiked() : this.isNotLiked();
+  }
+  showCardLikes(data) {
+    this._likes = data;
+    this._counterLike.textContent = this._likes.length;
+  }
+  //раздел лайков
+  deleteCard() {
     this._element.remove();
   }
 
@@ -42,14 +76,12 @@ class Card {
       this._handleCardClick(this._name, this._link);
     });
 
-    this._element
-      .querySelector(".card__trashcan")
-      .addEventListener("click", () => {
-        this._deleteCard();
-      });
+    this._cardTrashcan.addEventListener("click", () => {
+      this._handleCardDelete(this);
+    });
 
     this._cardLike.addEventListener("click", () => {
-      this._getLike();
+      this._handleCardLikes(this);
     });
   }
 }
