@@ -66,7 +66,7 @@ api
     };
     userProfileInfo.setUserInfo(profileInfoApi);
     userProfileInfo.setUserAvatar(userData.avatar);
-    cardList.renderItems(cards);
+    cardList.renderItems(cards.reverse());
   })
   .catch((error) => {
     console.error(`Ошибка массива кард: ${error} - ${error.statusText}`);
@@ -76,6 +76,7 @@ let userId;
 //экземпляры попапов с формой
 const popupWithFormProfile = new PopupWithForm(".popup_type_edit-profile", {
   submitForm: (userData) => {
+    popupWithFormProfile.renderLoading(true);
     api
       .editProfileInfo(userData)
       .then((res) => {
@@ -87,7 +88,8 @@ const popupWithFormProfile = new PopupWithForm(".popup_type_edit-profile", {
         console.error(
           `Ошибка установки информации о юзере: ${error} - ${error.statusText}`
         );
-      });
+      })
+      .finally(() => popupWithFormProfile.renderLoading(false));
   },
 });
 popupWithFormProfile.setEventListeners();
